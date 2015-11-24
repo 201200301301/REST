@@ -1,4 +1,4 @@
-package db.util;
+package com.my.db.util;
 
 
 import java.sql.ResultSet;

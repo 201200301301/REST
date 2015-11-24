@@ -1,11 +1,10 @@
-package login;
+package com.my.user.login;
 
 import java.io.IOException;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import db.util.JdbcUtils;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.QueryParam;
@@ -15,6 +14,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
+import com.my.db.util.JdbcUtils;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
