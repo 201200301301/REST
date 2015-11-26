@@ -32,18 +32,19 @@ public class CheckUser {
 	//根据用户id获取用户信息
 	public static Object checkUser(@QueryParam("userID") String ID) throws SQLException{
 		
-//		Response.set_header("Access-Control-Allow-Origin", "*");
+//		Response.set_header("Access-Control-Allow-Origin", "*");//跨域许可
 		String sql = "select * from user where id=?";
 		Object params[] = {ID};
 		System.out.println(params[0]);
 		return JdbcUtils.query(sql,params,true);
 		}
 	
+	
 	@POST
 	@Produces("application/json")
-	@Consumes("application/x-www-form-urlencoded")
+	@Consumes("application/x-www-form-urlencoded")//表单格式
 	@Path("check")
-	//根据用户id获取用户信息
+	//根据用户id和用户密码对用户进行验证
 	public static Object checkUser(@FormParam("userID") String ID,
 			@FormParam("password") String password) throws SQLException{
 		String sql = "select user_password from user where id=?";
@@ -51,7 +52,7 @@ public class CheckUser {
 		System.out.println(params[0]);
 		String re = JdbcUtils.query(sql,params,false);
 		
-		//对JSON数据进行解析，获取password进行比价
+		//对JSON数据进行解析，获取password进行比较
 		String result = "";
 		HashMap fin = new HashMap();
 		try {
@@ -78,6 +79,7 @@ public class CheckUser {
         System.out.println(result);
 		return result;
 		}
+	
 	
 	@POST
 	@Produces("application/json")

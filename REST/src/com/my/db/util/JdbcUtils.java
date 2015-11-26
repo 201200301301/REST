@@ -60,7 +60,6 @@ public class JdbcUtils {
      * @Method: release
      * @Description: 释放资源，
      *     要释放的资源包括Connection数据库连接对象，负责执行SQL命令的Statement对象，存储查询结果的ResultSet对象
-     *
      * @param conn
      * @param st
      * @param rs
@@ -117,7 +116,7 @@ public class JdbcUtils {
              for(int i=0;i<params.length;i++){
                  st.setObject(i+1, params[i]);
              }
-             int i = st.executeUpdate();
+             int i = st.executeUpdate();//返回印象的行数
              if (i > 0) {
             	 fin.put("message", "ok");
              }else {
@@ -145,7 +144,7 @@ public class JdbcUtils {
      * @param sql 要执行的SQL
      * @param params 执行SQL时使用的参数
      * @param rsh 查询返回的结果集处理器
-     * @return
+     * @return JSON格式数据
      * @throws SQLException
      */ 
      public static String query(String sql,Object params[], boolean page) throws SQLException{
